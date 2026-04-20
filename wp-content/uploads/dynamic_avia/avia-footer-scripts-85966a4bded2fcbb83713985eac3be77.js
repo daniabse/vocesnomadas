@@ -103,3 +103,25 @@ else{n.css({'margin-top':'-'+h+'px'})}};if(o){if(e>50){a(i,'remove','av_header_t
 else{a(i,'add','av_header_transparency')}}};if(e('body').is('.avia_deactivate_menu_resize'))s=!1;if(!o&&!s&&!n.length)return;l.on('debouncedresize',function(){r=e(t).attr('style','').filter(':first').height();d()});l.on('scroll',function(){window.requestAnimationFrame(d)});d()}})(jQuery);(function(t){'use strict';t(document).ready(function(){t('.avia_auto_toc').each(function(){var c=t(this).attr('id'),i='h1',s=[],n='',e=t(this).find('.avia-toc-container');if(e.length){var r=e.attr('data-level'),o=e.attr('data-exclude');if(typeof r!==undefined){i=r};if(typeof o!==undefined){n=o}};s=i.split(',');t('.entry-content-wrapper').find(i).each(function(){var i=t(this).attr('id'),h=t(this).prop('tagName').toLowerCase(),o=t(this).text(),l=s.indexOf(h),f='';if(i==undefined){var r=a(o);t(this).attr('id',r);i=r};if(!t(this).hasClass('av-no-toc')&&!t(this).hasClass(n)&&!t(this).parent().hasClass(n)){var c='<a href="#'+i+'" class="avia-toc-link avia-toc-level-'+l+'"><span>'+o+'</span></a>'};e.append(c)});t('.avia-toc-smoothscroll .avia-toc-link').on('click',function(a){a.preventDefault();var n=t(this).attr('href'),e=50,i=t('.html_header_top.html_header_sticky #header');if(i.length){e=i.outerHeight()+50};t('html,body').animate({scrollTop:t(n).offset().top-e})})})});function a(t){return t.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'-').replace(/^-+|-+$/g,'')}})(jQuery);'use strict';(function(a){var i=null,s=function(){if('undefined'==typeof window.av_google_map||'undefined'==typeof avia_framework_globals){return};if(i!=null){return};i=this;this.document=a(document);this.script_loading=!1;this.script_loaded=!1;this.script_source=avia_framework_globals.gmap_avia_api;this.maps={};this.loading_icon_html='<div class="ajax_load"><span class="ajax_load_inner"></span></div>';this.LoadAviaMapsAPIScript()};s.prototype={LoadAviaMapsAPIScript:function(){this.maps=a('body').find('.avia-google-map-container');if(this.maps.length==0){return};var s=!1;this.maps.each(function(i){var o=a(this);if(o.hasClass('av_gmaps_show_unconditionally')||o.hasClass('av_gmaps_show_delayed')){s=!0;return!1}});if(!s){return};if(document.cookie.match(/aviaPrivacyGoogleMapsDisabled/)){a('.av_gmaps_main_wrap').addClass('av-maps-user-disabled');return};if(typeof a.AviaMapsAPI!='undefined'){this.AviaMapsScriptLoaded();return};a('body').on('avia-google-maps-api-script-loaded',a.proxy(this.AviaMapsScriptLoaded,this));this.script_loading=!0;var i=document.createElement('script');i.id='avia-gmaps-api-script';i.type='text/javascript';i.src=this.script_source;document.body.appendChild(i)},AviaMapsScriptLoaded:function(){this.script_loading=!1;this.script_loaded=!0;var i=this;this.maps.each(function(o){var s=a(this);if(s.hasClass('av_gmaps_show_page_only')){return};var e=s.data('mapid');if('undefined'==typeof window.av_google_map[e]){console.log('Map cannot be displayed because no info: '+e);return};if(s.hasClass('av_gmaps_show_unconditionally')){s.aviaMaps()}
 else if(s.hasClass('av_gmaps_show_delayed')){var t=s.closest('.av_gmaps_main_wrap'),n=t.find('a.av_text_confirm_link');n.on('click',i.AviaMapsLoadConfirmed)}
 else{console.log('Map cannot be displayed because missing display class: '+e)}})},AviaMapsLoadConfirmed:function(i){i.preventDefault();var s=a(this),o=s.closest('.av_gmaps_main_wrap').find('.avia-google-map-container');o.aviaMaps()}};a(function(){new s()})})(jQuery);
+/* Scroll UX fix: immediately cancel jQuery smooth-scroll animations when users manually scroll.
+   This prevents the page from feeling "stuck" while a long anchor animation is running. */
+(function($){
+	'use strict';
+	$(function(){
+		var $doc = $(document);
+		var $roots = $('html, body');
+		var cancelAnimatedScroll = function(){
+			$roots.stop(true, false);
+		};
+
+		$doc.on('wheel touchmove keydown', function(event){
+			if(event.type === 'keydown'){
+				var key = event.key || '';
+				if(['ArrowUp','ArrowDown','PageUp','PageDown','Home','End',' '].indexOf(key) === -1){
+					return;
+				}
+			}
+			cancelAnimatedScroll();
+		});
+	});
+})(jQuery);
