@@ -2,6 +2,47 @@
 
 /* General Custom CSS */
 
+/* Keep the header sticky on every page, even if the theme option is off */
+html:not(.html_header_sticky) #top #wrap_all #header {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 501;
+}
+
+html:not(.html_header_sticky) #top #wrap_all #main {
+  padding-top: 88px !important;
+}
+
+html:not(.html_header_sticky).html_header_topbar_active #top #wrap_all #main {
+  padding-top: 119px !important;
+}
+
+html:not(.html_header_sticky).html_large #top #wrap_all #main {
+  padding-top: 116px !important;
+}
+
+html:not(.html_header_sticky).html_large.html_header_topbar_active #top #wrap_all #main {
+  padding-top: 147px !important;
+}
+
+html:not(.html_header_sticky).html_bottom_nav_header #top #wrap_all #main {
+  padding-top: 140px !important;
+}
+
+html:not(.html_header_sticky).html_bottom_nav_header.html_header_topbar_active #top #wrap_all #main {
+  padding-top: 170px !important;
+}
+
+html:not(.html_header_sticky).html_large.html_bottom_nav_header #top #wrap_all #main {
+  padding-top: 168px !important;
+}
+
+html:not(.html_header_sticky).html_large.html_bottom_nav_header.html_header_topbar_active #top #wrap_all #main {
+  padding-top: 198px !important;
+}
+
 
 
 
@@ -25,5 +66,12 @@ Mobile Styles
 @media only screen and (max-width: 767px) {
   /* Add your Mobile Styles here */
 
-}
+  html:not(.html_header_sticky) #top #wrap_all #header {
+    position: fixed !important;
+  }
 
+  html:not(.html_header_sticky) #top #wrap_all #main {
+    padding-top: 80px !important;
+  }
+
+}
