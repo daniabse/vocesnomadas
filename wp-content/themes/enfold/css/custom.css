@@ -75,3 +75,15 @@ Mobile Styles
   }
 
 }
+
+/* Hide repeated widget references */
+section.widget_text > h3.widgettitle,
+section.widget_text .textwidget label,
+section.widget_text .textwidget input::-webkit-input-placeholder,
+section.widget_text .textwidget input::-moz-placeholder,
+section.widget_text .textwidget input:-ms-input-placeholder,
+section.widget_text .textwidget input::-ms-input-placeholder,
+#cookie-notice,
+#sbi_mod_error {
+	display: none !important;
+}

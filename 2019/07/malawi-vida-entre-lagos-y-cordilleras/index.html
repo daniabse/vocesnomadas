@@ -193,6 +193,21 @@ else{document.documentElement.className+=' avia_desktop '};document.documentElem
 <link rel="apple-touch-icon" href="https://daniabse.github.io/vocesnomadas/wp-content/uploads/2026/04/cropped-Gemini_Generated_Image_4zklgw4zklgw4zkl-180x180.png">
 <meta name="msapplication-TileImage" content="https://daniabse.github.io/vocesnomadas/wp-content/uploads/2026/04/cropped-Gemini_Generated_Image_4zklgw4zklgw4zkl-270x270.png">
 		<style type="text/css" id="wp-custom-css">
+			/* Hide repeated widget references */
+			section.widget_text > h3.widgettitle,
+			section.widget_text .textwidget label,
+			#cookie-notice,
+			#sbi_mod_error {
+				display: none !important;
+			}
+
+			section.widget_text .textwidget input::placeholder {
+				color: transparent !important;
+			}
+
+			section.widget_text .textwidget input::-webkit-input-placeholder {
+				color: transparent !important;
+			}
 			/* Color icono buscar movil */
 
 #menu-item-search a:before {
