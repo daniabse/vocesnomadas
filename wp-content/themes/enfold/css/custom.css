@@ -2,13 +2,19 @@
 
 /* General Custom CSS */
 
-/* Keep the header sticky on every page, even if the theme option is off */
+/* Keep the header sticky on every page and viewport */
+#top #wrap_all #header,
+html.responsive #top #wrap_all #header,
+html.responsive.html_mobile_menu_tablet #top #wrap_all #header,
+html.responsive.html_header_top.html_header_sticky #top #wrap_all #header,
 html:not(.html_header_sticky) #top #wrap_all #header {
   position: fixed !important;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 501;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 501 !important;
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
 html:not(.html_header_sticky) #top #wrap_all #main {
@@ -66,14 +72,46 @@ Mobile Styles
 @media only screen and (max-width: 767px) {
   /* Add your Mobile Styles here */
 
+  #top #wrap_all #header,
+  html.responsive #top #wrap_all #header,
+  html.responsive.html_mobile_menu_tablet #top #wrap_all #header,
   html:not(.html_header_sticky) #top #wrap_all #header {
     position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
+  #top #wrap_all #main,
+  html.responsive #top #wrap_all #main,
+  html.responsive.html_header_top.html_header_sticky #top #wrap_all #main,
   html:not(.html_header_sticky) #top #wrap_all #main {
     padding-top: 80px !important;
   }
 
+}
+
+@media only screen and (min-width: 768px) and (max-width: 989px) {
+  #top #wrap_all #header,
+  html.responsive #top #wrap_all #header,
+  html.responsive.html_mobile_menu_tablet #top #wrap_all #header,
+  html:not(.html_header_sticky) #top #wrap_all #header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  #top #wrap_all #main,
+  html.responsive #top #wrap_all #main,
+  html.responsive.html_header_top.html_header_sticky #top #wrap_all #main,
+  html:not(.html_header_sticky) #top #wrap_all #main {
+    padding-top: 88px !important;
+  }
 }
 
 /* Hide repeated widget references */
